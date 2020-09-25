@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "json viewer", "json viewer\json viewer.csproj", "{1659DE97-D5C6-4A83-AA59-E73209626CAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTools", "WebTools\WebTools.csproj", "{BFBF98BA-34C8-4009-98C5-4808602FDA9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1659DE97-D5C6-4A83-AA59-E73209626CAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1659DE97-D5C6-4A83-AA59-E73209626CAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1659DE97-D5C6-4A83-AA59-E73209626CAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFBF98BA-34C8-4009-98C5-4808602FDA9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFBF98BA-34C8-4009-98C5-4808602FDA9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFBF98BA-34C8-4009-98C5-4808602FDA9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFBF98BA-34C8-4009-98C5-4808602FDA9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

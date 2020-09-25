@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using WebTools;
 
 namespace json_viewer
 {
@@ -13,5 +14,9 @@ namespace json_viewer
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            ApiHelper.InitializeClient();
+        }
     }
 }

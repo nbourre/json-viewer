@@ -23,7 +23,7 @@
         </Menu>
         <ToolBar DockPanel.Dock="Top">
             <TextBlock Text="URL : "/>
-            <TextBox Width="250" Text="{Binding URL}" x:Name="txtURL"/>
+            <TextBox Width="250" Text="{Binding URL, UpdateSourceTrigger=PropertyChanged}" x:Name="txtURL"/>
             <Button Content="Read" Command="{Binding GetJsonCommand}" CommandParameter="{Binding ElementName=txtURL,Path=Text}"/>
         </ToolBar>
         <StatusBar DockPanel.Dock="Bottom">
