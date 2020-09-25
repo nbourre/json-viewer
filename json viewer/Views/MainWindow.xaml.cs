@@ -23,6 +23,7 @@ namespace json_viewer
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
         }
     }
 }
