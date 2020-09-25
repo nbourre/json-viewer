@@ -18,14 +18,24 @@
         </Style>
     </Window.Resources>
     <DockPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="File"/>
-        </Menu>
-        <ToolBar DockPanel.Dock="Top">
-            <TextBlock Text="URL : "/>
-            <TextBox Width="250" Text="{Binding URL, UpdateSourceTrigger=PropertyChanged}" x:Name="txtURL"/>
-            <Button Content="Read" Command="{Binding GetJsonCommand}" CommandParameter="{Binding ElementName=txtURL,Path=Text}"/>
-        </ToolBar>
+        
+        <Grid DockPanel.Dock="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Menu Grid.Row="0">
+                <MenuItem Header="File"/>
+            </Menu>
+
+            <ToolBar Grid.Row="1">
+                <TextBlock Text="URL : "/>
+                <TextBox Width="250" Text="{Binding URL, UpdateSourceTrigger=PropertyChanged}" x:Name="txtURL"/>
+            </ToolBar>
+            <Button Grid.Row="1" HorizontalAlignment="Right"
+                Content="Read" Command="{Binding GetJsonCommand}" CommandParameter="{Binding ElementName=txtURL,Path=Text}"/>
+        </Grid>
+        
         <StatusBar DockPanel.Dock="Bottom">
             <TextBlock Text="Status : " />
         </StatusBar>

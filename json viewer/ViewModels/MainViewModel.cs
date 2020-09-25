@@ -1,10 +1,8 @@
 ﻿using json_viewer.Commands;
+using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Text.Json;
-using System.Windows;
 using WebTools;
 
 namespace json_viewer
@@ -37,6 +35,7 @@ namespace json_viewer
         public MainViewModel()
         {
             GetJsonCommand = new DelegateCommand<string>(GetJson, CanGetJson);
+            URL = "https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=2";
         }
 
         private bool CanGetJson(string url)
@@ -66,9 +65,9 @@ namespace json_viewer
                 WriteIndented = true
             };
 
-            var jsonElement = JsonSerializer.Deserialize<JsonElement>(unPrettyJson);
+            var jsonElement = System.Text.Json.JsonSerializer.Deserialize<JsonElement>(unPrettyJson);
 
-            return JsonSerializer.Serialize(jsonElement, options);
+            return System.Text.Json.JsonSerializer.Serialize(jsonElement, options);
         }
 
     }
