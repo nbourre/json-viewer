@@ -1,7 +1,9 @@
 ﻿using json_viewer.Commands;
 using Newtonsoft.Json;
 using System;
+using System.Diagnostics;
 using System.Net.Http;
+using System.Security;
 using System.Text.Json;
 using WebTools;
 
@@ -9,24 +11,47 @@ namespace json_viewer
 {
     public class MainViewModel : BaseViewModel
     {
-        //Some text : u0siMcYqfejOC-tWAD_P
-
+        // Exercice avec jeton : https://the-one-api.dev/documentation#1
+        
         private string url;
         private string jsonContent;
+        private string endPoint;
+        private string token;
 
-        public string URL { 
+        public string URL
+        {
             get => url;
-            set { 
+            set
+            {
                 url = value;
                 OnPropertyChanged();
                 GetJsonCommand.RaiseCanExecuteChanged();
             }
         }
 
+        public string EndPoint
+        {
+            get => endPoint;
+            set
+            {
+                endPoint = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Token { 
+            get => token;
+            set {
+                token = value;
+                OnPropertyChanged();
+            }
+        }
+
         public string JsonContent
         {
             get => jsonContent;
-            set { 
+            set
+            {
                 jsonContent = value;
                 OnPropertyChanged();
             }
@@ -37,23 +62,36 @@ namespace json_viewer
         public MainViewModel()
         {
             GetJsonCommand = new DelegateCommand<string>(GetJson, CanGetJson);
-            URL = "https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=2";
+            URL = "https://cat-fact.herokuapp.com";
+            EndPoint = "/facts/random?animal_type=cat&amount=2";
+
         }
 
         private bool CanGetJson(string url)
-        {  
+        {
             return Uri.IsWellFormedUriString(url, UriKind.Absolute);
         }
 
         private async void GetJson(string url)
         {
+            if (EndPoint != string.Empty)
+            {
+                url += EndPoint;
+            }
+
+            if (Token != string.Empty)
+            {
+                ApiHelper.SetAuthenticationBearer(Token.ToString());
+            }
+
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
             {
                 if (response.IsSuccessStatusCode)
                 {
                     var temp = await response.Content.ReadAsStringAsync();
                     JsonContent = PrettyJson(temp);
-                } else
+                }
+                else
                 {
                     JsonContent = response.ReasonPhrase;
                 }

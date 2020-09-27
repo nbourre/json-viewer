@@ -25,5 +25,6 @@ namespace json_viewer
             InitializeComponent();
             DataContext = new MainViewModel();
         }
+
     }
 }

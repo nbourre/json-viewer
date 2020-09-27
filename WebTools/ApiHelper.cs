@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.Net;
+using System.Net.Http;
 
 namespace WebTools
 {
@@ -12,6 +13,18 @@ namespace WebTools
             ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiClient.DefaultRequestHeaders.Accept.
                 Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+        }
+
+        public static void SetAuthenticationBearer(string token)
+        {
+            ApiClient.DefaultRequestHeaders.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+        }
+
+        public static void ClearAuthenticationBearer()
+        {
+            ApiClient.DefaultRequestHeaders.Authorization = null;
         }
     }
 }

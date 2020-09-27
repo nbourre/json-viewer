@@ -7,20 +7,23 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
-        <Style TargetType="TextBlock">
-            <Setter Property="Margin" Value="3" />
+        <Style x:Key="margins">
+            <Setter Property="Control.Margin" Value="3"/>
         </Style>
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="3" />
+        <Style x:Key="inputWidths">
+            <Setter Property="Control.Width" Value="125" />
         </Style>
-        <Style TargetType="TextBox">
-            <Setter Property="Margin" Value="3" />
-        </Style>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource margins}"/>
+        <Style TargetType="Button" BasedOn="{StaticResource margins}"/>
+        <Style TargetType="TextBox" BasedOn="{StaticResource margins}"/>
+        <Style TargetType="PasswordBox" BasedOn="{StaticResource margins}"/>
+
     </Window.Resources>
     <DockPanel>
         
         <Grid DockPanel.Dock="Top">
             <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
@@ -31,9 +34,15 @@
             <ToolBar Grid.Row="1">
                 <TextBlock Text="URL : "/>
                 <TextBox Width="250" Text="{Binding URL, UpdateSourceTrigger=PropertyChanged}" x:Name="txtURL"/>
+                <TextBlock Text="EndPoint : "/>
+                <TextBox Width="250" Text="{Binding EndPoint, UpdateSourceTrigger=PropertyChanged}" x:Name="txtEndPoint"/>
             </ToolBar>
             <Button Grid.Row="1" HorizontalAlignment="Right"
                 Content="Read" Command="{Binding GetJsonCommand}" CommandParameter="{Binding ElementName=txtURL,Path=Text}"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                <TextBlock Text="Token :" />
+                <TextBox Style="{StaticResource inputWidths }" Text="{Binding Token}"/>
+            </StackPanel>
         </Grid>
         
         <StatusBar DockPanel.Dock="Bottom">
