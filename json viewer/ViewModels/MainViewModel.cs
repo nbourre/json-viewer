@@ -79,7 +79,7 @@ namespace json_viewer
                 url += EndPoint;
             }
 
-            if (Token != string.Empty)
+            if (Token != string.Empty && Token != null)
             {
                 ApiHelper.SetAuthenticationBearer(Token.ToString());
             }
