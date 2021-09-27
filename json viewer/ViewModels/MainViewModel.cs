@@ -62,8 +62,8 @@ namespace json_viewer
         public MainViewModel()
         {
             GetJsonCommand = new DelegateCommand<string>(GetJson, CanGetJson);
-            URL = "https://cat-fact.herokuapp.com";
-            EndPoint = "/facts/random?animal_type=cat&amount=2";
+            URL = "https://the-one-api.dev/v2";
+            EndPoint = "/movie";
 
         }
 
